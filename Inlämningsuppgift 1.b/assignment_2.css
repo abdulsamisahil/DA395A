@@ -1,0 +1,18 @@
+ul {
+    padding: 0px;
+}
+
+li {
+    display: flex;
+    background-color: #eee;
+    margin: 5px;
+    padding: 5px;
+    align-items: center;
+}
+
+li > span {
+    margin-left: auto;
+    background-color: #aaa;
+    padding: 5px;
+    cursor: pointer;
+}
