@@ -1,1 +1,9 @@
 /* Valfritt - men snygga gärna till sidan genom lite CSS */
+
+section {
+  display: none;
+}
+
+h2 {
+  cursor: pointer;
+}

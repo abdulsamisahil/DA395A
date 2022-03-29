@@ -1,7 +1,7 @@
 const main = () => {
   console.log('Uppgift 5.')
 
-  let countries = ['Sweden', 'Denmark', 'Finland', 'Norwary']
+  let countries = ['Sweden', 'Denmark', 'Finland', 'Norway']
 
   let threeLetters = countries[1].substring(0, 3)
 
@@ -19,4 +19,4 @@ const main = () => {
 
 main()
 
-exports.main = main
+//exports.main = main
