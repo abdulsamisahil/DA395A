@@ -19,4 +19,4 @@ const main = () => {
 
 main()
 
-//exports.main = main
+exports.main = main
