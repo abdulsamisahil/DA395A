@@ -4,9 +4,13 @@ body {
 }
 
 /* Er CSS-kod nedan */
-#container {
-  display: flex;
-  flex-direction: row;
+#movie-figures {
+  display: flexbox;
+  flex-wrap: wrap;
+}
+
+#movie-figures > figure > img {
+  max-width: 100%;
 }
 /* Mobile */
 @media screen and (max-width: 500px) {
