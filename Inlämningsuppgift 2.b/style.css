@@ -4,6 +4,16 @@ body {
 }
 
 /* Er CSS-kod nedan */
+
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+}
+
 #movie-figures {
   display: flex;
   flex-wrap: wrap;
