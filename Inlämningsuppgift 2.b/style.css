@@ -40,15 +40,18 @@ footer {
   text-align: center;
   padding: 15px;
 }
-/* Mobile */
-@media screen and (max-width: 500px) {
-  /* Anpassningar ... */
-}
+
 /* Desktop */
 @media screen and (max-width: 1300px) {
   /* Anpassningar ... */
 }
+
 /* Tablet */
 @media screen and (max-width: 900px) {
+  /* Anpassningar ... */
+}
+
+/* Mobile */
+@media screen and (max-width: 500px) {
   /* Anpassningar ... */
 }
