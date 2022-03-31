@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Er CSS-kod nedan */
+#container {
+  display: flex;
+  flex-direction: row;
+}
+/* Mobile */
+@media screen and (max-width: 500px) {
+  /* Anpassningar ... */
+}
+/* Desktop */
+@media screen and (max-width: 1300px) {
+  /* Anpassningar ... */
+}
+/* Tablet */
+@media screen and (max-width: 900px) {
+  /* Anpassningar ... */
+}
