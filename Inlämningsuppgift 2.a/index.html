@@ -54,7 +54,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active text-white" aria-current="page" href="#"
-                >Kontakta mig</a
+                data-bs-toggle="modal" data-bs-target="#contactMeModal">Kontakta mig</a
               >
             </li>
           </ul>
@@ -73,7 +73,7 @@
                   <th scope="col">Namn</th>
                   <th scope="col">E-postadress</th>
                   <div class="col-3">
-                    <th id="link-to-mau" scope="col">Länk till Mau</th>
+                    <th id="link-to-mau" scope="col"><a tabindex="0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Mau förklaring" data-bs-content="Mau är en forkortning till Malmö universitet">Länk till Mau</a></th>
                   </div>
                 </tr>
               </thead>
@@ -105,13 +105,124 @@
         <div class="col"><h3>Olika CSS-ramverk</h3></div>
       </div>
       <div class="row">
-        <div class="col bg-info"><p>Bootstrap</p></div>
+        <div class="col">
+          <div class="card" style="width: 16rem;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Bootstrap</h5>
+              <p class="card-text">This is Bootstrap CSS</p>
+              <button class="btn btn-primary">Läs mer</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 16rem;">
+            <img src="https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Material-UI</h5>
+              <p class="card-text">This is Material-UI CSS</p>
+              <button class="btn btn-primary">Läs mer</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 16rem;">
+            <img src="https://cms-assets.tutsplus.com/uploads/users/30/posts/33545/preview_image/tailwind-pre.png" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Tailwind</h5>
+              <p class="card-text">This is Thailwind CSS</p>
+              <button class="btn btn-primary">Läs mer</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 16rem;">
+            <img src="https://raw.githubusercontent.com/jgthms/bulma/master/docs/images/bulma-banner.png" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Bulma</h5>
+              <p class="card-text">This is Bulma CSS</p>
+              <button class="btn btn-primary">Läs mer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <div class="col-12"><h5>Bildspel</h5></div>
+          <br>
+          <div class="carousel carousel-dark slide" data-bs-ride="carousel" id="slideshow-carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#slideshow-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#slideshow-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#slideshow-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="5000">
+                <img src="https://starwarsblog.starwars.com/wp-content/uploads/2022/03/star-wars-exploring-tatooine-back-cover-TALL.jpg" class="d-block w-100" >
+                <div class="carousel-caption d-none d-md-block text-white">
+                  <h5>Star War 1</h5>
+                  <p>This is the active slide of Star War</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://www.looper.com/img/gallery/questionable-things-we-ignore-in-the-star-wars-franchise/l-intro-1626242861.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block text-white">
+                  <h5>Star War 2</h5>
+                  <p>This is the 2nd slide of Star War</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://cdn.vox-cdn.com/thumbor/N5M6TgeSh96PVsHTF1teT9w3ZpQ=/0x0:3186x2102/1200x675/filters:focal(1339x797:1847x1305)/cdn.vox-cdn.com/uploads/chorus_image/image/70598217/MicrosoftTeams_image_61__copy.0.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block text-white">
+                  <h5>Star War 3</h5>
+                  <p>This is the 3rd slide of Star War</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#slideshow-carousel" data-bs-slide-to="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#slideshow-carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="contactMeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Kontakta mig</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <p class="fst-italic">Om du vill komma i kontakt med mig, använd formuläret nedan!</p>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Din e-postadress</label>
+                <input type="email" id="email" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="message-body" class="form-label">Ditt meddelande</label>
+                <textArea type="text" id="message-body" class="form-control"></textArea>
+              </div>
 
-        <div class="col bg-primary"><p>Material-UI</p></div>
-
-        <div class="col bg-danger"><p>Tailwind</p></div>
-
-        <div class="col bg-secondary"><p>Bulma</p></div>
+              <div class="d-grid">
+                <button class="btn btn-success btn-lg" type="submit">Skicka meddelande</button>
+                <br>
+                <button class="btn btn-md btn-secondary" data-dismiss="modal">Stäng</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
     <!--JS-bootstrap 5.1 script-->
