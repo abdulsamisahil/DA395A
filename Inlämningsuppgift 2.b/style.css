@@ -5,12 +5,29 @@ body {
 
 /* Er CSS-kod nedan */
 #movie-figures {
-  display: flexbox;
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 #movie-figures > figure > img {
-  max-width: 100%;
+  max-width: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+header {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+footer {
+  font-size: large;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 15px;
 }
 /* Mobile */
 @media screen and (max-width: 500px) {
