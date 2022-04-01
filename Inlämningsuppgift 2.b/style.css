@@ -64,6 +64,11 @@ nav > a:hover {
   justify-content: center;
 }
 
+#movie-figures > figure {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
 #movie-figures > figure > img {
   max-width: 300px;
   width: 100%;
