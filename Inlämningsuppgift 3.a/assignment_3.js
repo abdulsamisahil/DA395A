@@ -5,6 +5,7 @@ $('#add-movie-form').on('submit', (e) => {
 
   let rating = ''
 
+  /* Tar fram värdet av betyget och sparar det i ratings */
   $('#rating-field')
     .change(function () {
       $('#rating-field option:selected').each(function () {
@@ -13,6 +14,7 @@ $('#add-movie-form').on('submit', (e) => {
     })
     .trigger('change')
 
+  /* Validera */
   if (title.val() === '' && rating === '0') {
     alert('Du måste ange film titel och betyg för att spara den...')
     return
@@ -26,41 +28,37 @@ $('#add-movie-form').on('submit', (e) => {
     alert('Du måste ange betyg för att spara filmen...')
     return
   } else {
-    //Add movie now
+    addFilm(title, rating)
 
-    $('#movies').append(`
+    deleteFilm()
+  }
+})
+/* Lägg till film */
+const addFilm = (title, rating) => {
+  /* Renderera elements till DOM */
+  $('#movies').append(`
     
         <li>${title.val()}
-        <img src="./images/delete.png" />
+        <img id="delete" src="./images/delete.png" />
 
-    
     </li>`)
 
-    rating_value = parseInt(rating)
+  /* Konvertera rating strängen till integer inför loopen */
+  let rating_value = parseInt(rating)
 
-    let i = 0
+  let i = 0
 
-    while (i < rating_value) {
-      // Bugg here, solution: create a collection of images tags
-      // and out of the loop append the collection to li once.
-
-      $('li').append('<img src="./images/star.png" />')
-
-      i++
-    }
-
-    console.log('add movie now...' + typeof rating_value)
+  /* Skapa och renderera till li i DOM antalet img elements baserad på betyg-valet */
+  while (i < rating_value) {
+    $('#movies li:last').append('<img src="./images/star.png" />')
+    i++
   }
+}
 
-  /*  if (!rating.get().length > 0) {
-  } */
-
-  /*  rating.each(function () {
-    if ($(this).is(':selected')) {
-      alert('Du måste ange betyd för att spara filmen...')
-    }
-  }) */
-  /* if (!rating.isSelected()) {
-  } */
-  // console.log('Spara film startades...')
-})
+/* Att radera filmen sätter jag en eventhandler till förälder-element li isf, 
+då elementet rendereras till DOM Dynmaniskt */
+const deleteFilm = () => {
+  $('li').on('click', "img[id^='delete']", function () {
+    $(this).closest('li').remove()
+  })
+}
