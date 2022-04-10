@@ -27,6 +27,33 @@ $(document).ready(() => {
           $('#movies-list').append(html)
         },
         success: (data) => {
+          /* http://www.omdbapi.com/?s=Titanic&apikey=e96a25a4 */
+          /* Returns an object, containing a Search object with first object as an array */
+          /*  let movies
+          //movies.push(data.Search)
+
+          $.each(data.Search, (key, value) => {
+            movies = {
+              title: value.Title,
+              year: value.Year,
+              poster: value.Poster,
+            }
+            // console.log('Title: ' + value.Title + ' | Year: ' + value.Year)
+          })
+
+          let { title, poster, year } = movies
+
+          console.log(title, poster, year) */
+          //let title, image, year
+
+          /* movies[0].forEach((element) => {
+            title = element.Title
+            image = element.Poster
+            year = element.Year
+          }) */
+          //console.log(Title + ': ' + Poster + ': ' + Year)
+          // console.log(movies)
+
           const html = `<li class="list-group-item">
 
                             <div class="row d-flex align-items-center">
