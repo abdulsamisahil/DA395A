@@ -1,7 +1,7 @@
 $(document).ready(() => {
   let request = null
-  let image, title, year
-  let my_url = 'http://www.omdbapi.com/?t='
+  let title
+  let my_url = 'http://www.omdbapi.com/?s='
 
   $('#search-input').keyup(function () {
     $('#movies-list').empty()
@@ -17,66 +17,50 @@ $(document).ready(() => {
         type: 'GET',
         url: my_url + `${title}&apikey=e96a25a4`,
         dataType: 'JSON',
+
+        success: (data) => {
+          try {
+            getFilmList(data)
+          } catch (error) {}
+        },
         error: () => {
           const html = `<li class="list-group-item">
 
-                        <div class="row d-flex fs-5 align-items-center">Ingen film hittades med titel ${title}</div>
+                          <div class="row d-flex fs-5 align-items-center">Ingen film hittades med titel ${title}</div>
                  
                         </li>
                         `
-          $('#movies-list').append(html)
-        },
-        success: (data) => {
-          /* http://www.omdbapi.com/?s=Titanic&apikey=e96a25a4 */
-          /* Returns an object, containing a Search object with first object as an array */
-          /*  let movies
-          //movies.push(data.Search)
-
-          $.each(data.Search, (key, value) => {
-            movies = {
-              title: value.Title,
-              year: value.Year,
-              poster: value.Poster,
-            }
-            // console.log('Title: ' + value.Title + ' | Year: ' + value.Year)
-          })
-
-          let { title, poster, year } = movies
-
-          console.log(title, poster, year) */
-          //let title, image, year
-
-          /* movies[0].forEach((element) => {
-            title = element.Title
-            image = element.Poster
-            year = element.Year
-          }) */
-          //console.log(Title + ': ' + Poster + ': ' + Year)
-          // console.log(movies)
-
-          const html = `<li class="list-group-item">
-
-                            <div class="row d-flex align-items-center">
-                                <div class="col">
-                                    <img
-                                        class="img-thumbnail float-start"
-                                        src="${data.Poster}"
-                                    />
-                                </div>
-                                <div class="col">
-                                    <span class="fs-4">${data.Title}</span>
-                                </div>
-                                <div class="col">
-                                    <span class="badge fs-5 bg-success float-end">${data.Year}</span>
-                                </div>
-                            </div>
-        
-                        </li>
-                        `
-
           $('#movies-list').append(html)
         },
       })
     }
   })
 })
+
+const getFilmList = (data) => {
+  let html = ``
+
+  data.Search.forEach((element) => {
+    html += `
+              <li class="list-group-item h-50">
+                <div class="row d-flex align-items-center">
+                  <div class="col">
+                    <img
+                      class="img-thumbnail mw-50 float-start"
+                      src="${element.Poster}"
+                      style="height: 200px;"
+                    />
+                  </div>
+                  <div class="col">
+                    <span class="fs-4">${element.Title}</span>
+                  </div>
+                  <div class="col">
+                    <span class="badge fs-5 bg-success float-end">${element.Year}</span>
+                  </div>
+                </div>
+              </li>
+            `
+  })
+
+  $('#movies-list').append(html)
+}
