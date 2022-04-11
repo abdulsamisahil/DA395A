@@ -16,19 +16,26 @@ html {
 #container {
   display: grid;
   width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    'header header header'
+    'nav  nav nav'
+    'main main main'
+    'footer footer footer';
 }
 
 header {
   display: flex;
   flex-direction: row;
+  grid-area: header;
   background-color: black;
   color: white;
   justify-content: center;
   align-items: center;
-  padding: 15px;
 }
 
 main {
+  grid-area: main;
   margin-left: 10px;
   padding: 1px 16px;
 }
@@ -49,6 +56,7 @@ main p {
 nav {
   display: flex;
   flex-direction: row;
+  grid-area: nav;
   justify-content: space-around;
   align-items: center;
   background-color: #333;
@@ -87,6 +95,7 @@ nav > a:hover {
 footer {
   display: flex;
   flex-direction: row;
+  grid-area: footer;
   font-size: large;
   background-color: black;
   color: white;
@@ -117,60 +126,41 @@ footer {
   /* Anpassningar .. */
 
   #container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-    ""
-    ;
+    height: 1220px;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'header main main'
+      'nav main main'
+      'footer main main';
   }
   header {
-    width: 160px;
+    max-width: auto;
+    height: auto;
   }
-
-  footer {
-    width: 160px;
-    height: 100%;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    z-index: -1;
-    align-items: flex-start;
-    justify-content: start;
-    height: 100%;
-    width: 160px;
-    padding-top: 150px;
-  }
-
   main {
-    margin-top: -80px;
-    margin-left: 170px;
+    margin-left: 0;
   }
 
   #movie-figures {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: start;
   }
 
   #movie-figures > figure {
-    max-width: 50%;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    padding: 5px;
-    margin: 0;
+    margin: auto;
+  }
+  #movie-figures > figure > img {
+    max-width: 250px;
   }
 
-  nav > a {
-    border-bottom: 2px solid black;
+  footer {
+    max-width: auto;
+    height: auto;
+    align-items: center;
   }
 
-  main h2 {
-    font-size: 3vw;
-  }
-
-  main p {
-    font-size: 2vw;
+  nav {
+    max-width: auto;
+    flex-direction: column;
   }
 }
 
@@ -178,28 +168,13 @@ footer {
 @media screen and (max-width: 500px) {
   /* Anpassningar ...*/
 
-  header {
-    width: 100%;
-  }
-
-  footer {
-    width: 100%;
-  }
-
-  main {
-    margin: 0;
-    height: 100%;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding-top: 0;
+  #container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'header'
+      'nav'
+      'main'
+      'footer';
   }
 
   nav > a {
@@ -215,6 +190,10 @@ footer {
     max-width: 100%;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     padding: 5px;
+  }
+
+  #movie-figures > figure > img {
+    max-width: 100%;
   }
 
   main h2 {
