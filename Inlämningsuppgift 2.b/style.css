@@ -116,6 +116,12 @@ footer {
 @media screen and (max-width: 900px) {
   /* Anpassningar .. */
 
+  #container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    ""
+    ;
+  }
   header {
     width: 160px;
   }
