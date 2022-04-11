@@ -129,9 +129,9 @@ footer {
     height: 1220px;
     grid-template-columns: auto 1fr;
     grid-template-areas:
-      'header main main'
-      'nav main main'
-      'footer main main';
+      'header main'
+      'nav main'
+      'footer main';
   }
   header {
     max-width: auto;
