@@ -20,7 +20,7 @@ $(document).ready(() => {
 
         success: (data) => {
           try {
-            getFilmList(data)
+            $('#movies-list').append(getFilmList(data))
           } catch (error) {}
         },
         error: () => {
@@ -62,5 +62,5 @@ const getFilmList = (data) => {
             `
   })
 
-  $('#movies-list').append(html)
+  return html
 }

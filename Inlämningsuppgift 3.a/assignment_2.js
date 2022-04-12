@@ -4,11 +4,12 @@ $('#newsletter-form').on('submit', (e) => {
   e.preventDefault()
 
   // Här placerar ni er validerings kod.
-  const name = $('input')
+  const input = $('input')
+  const name = $('#name-field')
   const age = $('#age-field')
   const email = $('#email-field')
 
-  $('input').each(function () {
+  input.each(function () {
     if ($(this).val() == '') {
       $(this).css('background-color', 'red')
     } else {

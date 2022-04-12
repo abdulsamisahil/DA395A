@@ -31,6 +31,8 @@ $('#add-movie-form').on('submit', (e) => {
     addFilm(title, rating)
 
     deleteFilm()
+
+    $('#add-movie-form').trigger('reset')
   }
 })
 /* Lägg till film */
