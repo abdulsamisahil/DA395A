@@ -15,6 +15,9 @@ $('#newsletter-form').on('submit', (e) => {
     } else {
       $(this).css('background-color', 'transparent')
     }
+    $(this).keyup(function () {
+      $(this).css('background-color', 'transparent')
+    })
   })
 
   // Om allting var korrekt - skicka vidare användaren.
