@@ -41,7 +41,7 @@ const addFilm = (title, rating) => {
   $('#movies').append(`
     
         <li>${title.val()}
-        <img class="delete-movie-icon" src="./images/delete.png" />
+        <img src="./images/delete.png" alt="Delete movie" class="delete-movie-icon"/>
 
     </li>`)
 
