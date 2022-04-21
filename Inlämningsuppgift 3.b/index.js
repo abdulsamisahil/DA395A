@@ -4,7 +4,7 @@ $(document).ready(() => {
   let my_url = 'http://www.omdbapi.com/?s='
 
   $('#search-input').keyup(function () {
-    $('#movies-list').empty()
+    $('#movie-list').empty()
 
     title = $(this).val()
 
@@ -20,7 +20,7 @@ $(document).ready(() => {
 
         success: (data) => {
           try {
-            $('#movies-list').append(getFilmList(data))
+            $('#movie-list').append(getFilmList(data))
           } catch (error) {}
         },
         error: () => {
@@ -30,7 +30,7 @@ $(document).ready(() => {
                  
                         </li>
                         `
-          $('#movies-list').append(html)
+          $('#movie-list').append(html)
         },
       })
     }

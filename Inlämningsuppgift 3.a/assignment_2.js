@@ -13,10 +13,10 @@ $('#newsletter-form').on('submit', (e) => {
     if ($(this).val() == '') {
       $(this).css('background-color', 'red')
     } else {
-      $(this).css('background-color', 'transparent')
+      $(this).css('background-color', 'white')
     }
     $(this).keyup(function () {
-      $(this).css('background-color', 'transparent')
+      $(this).css('background-color', 'white')
     })
   })
 
