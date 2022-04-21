@@ -41,7 +41,7 @@ const addFilm = (title, rating) => {
   $('#movies').append(`
     
         <li>${title.val()}
-        <img class="delete" src="./images/delete.png" />
+        <img class="delete-movie-icon" src="./images/delete.png" />
 
     </li>`)
 
@@ -60,7 +60,7 @@ const addFilm = (title, rating) => {
 /* Att radera filmen sätter jag en eventhandler till förälder-element li isf, 
 då elementet rendereras till DOM Dynmaniskt */
 const deleteFilm = () => {
-  $('li').on('click', "img[class^='delete']", function () {
+  $('li').on('click', "img[class^='delete-movie-icon']", function () {
     $(this).closest('li').remove()
   })
 }
