@@ -1,83 +1,89 @@
 function printMovies(movies) {
-  /*
-        Todo: Skriv ut alla filmer i arrayen "movies". Varje film ska ha följande format:
-
-        <li data-grade="5" data-title="Star Wars">
-            Star Wars
-            <img src="star.png" alt="Star">
-            <img src="star.png" alt="Star">
-            <img src="star.png" alt="Star">
-            <img src="star.png" alt="Star">
-            <img src="star.png" alt="Star">
-            <img src="delete.png" alt="Delete movie" class="delete-movie">
-        </li>
-    */
+  movies.map((movie) => {
+    $('#movie-list').append(`
+        <li data-grade="${movie.grade}" data-title="${movie.title}">
+            ${movie.title}
+            <img src="./images/delete.png" alt="Delete movie" class="delete-movie">
+            ${getStars(movie.grade)}
+        </li>`)
+  })
 }
 
 function loadMovies() {
-  /*
-        Todo: Filmerna ska snart laddas in från localStorage, men till
-        en början nöjer vi oss med en vanlig array med filmer
-    */
-  const movies = [
-    { title: 'Star Wars', grade: 5 },
-    { title: 'Titanic', grade: 4 },
-    { title: 'Drive', grade: 1 },
-  ]
+  const movies = JSON.parse(localStorage.getItem('movies'))
 
   return movies
 }
 
 function getStars(rating) {
-  /*
-        Todo: Baserat på "rating" (en siffra) så returnerar denna
-        funktion HTML-kod för antalet stjärnor (betyg) för en film.
-    */
-
-  let stars
-  for (let i in rating) stars += '<img src="star.png" alt="Star">'
+  let stars = ''
+  for (let i = 0; i < rating; i++)
+    stars += ' <img src="./images/star.png" alt="Star">'
 
   return stars
 }
 
 function saveMovies(movies) {
-  /*
-        Todo: Sparar filmerna till localStorage (JSON-format)
-    */
+  localStorage.setItem('movies', JSON.stringify(movies))
 }
 
 $('#new-movie-form').on('submit', function (e) {
-  /*
-        Todo: När man klickar på knappen "Spara film" så ska funktionen:
-        1. Validera att man skrivit in en titel & valt ett betyg. Om inte
-        så ska vi visa upp (i en popup-ruta) ett meddelande om att både
-        titel & betyg måste fyllas i.
-        2. Lägga till en film i vår lista av filmer i localStorage
-        3. Visa den nya filmen i vår lista av filmer
-        4. Återställa formuläret (ingen titel, eller betyg valt)
-    */
+  let rating = ''
+  $('select')
+    .change(function () {
+      $('select option:selected').each(function () {
+        rating += $(this).index() + ''
+      })
+    })
+    .trigger('change')
 
-  console.log(getStars(5))
+  const title = $('#title')
+  const grade = parseInt(rating)
+
+  let movies = localStorage.getItem('movies') || '[]'
+  movies = JSON.parse(movies)
+
+  if (validate(title, grade)) {
+    movies.push({ id: Date.now(), title: title.val(), grade: grade })
+    $('#movie-list').append(`
+        <li id='${Date.now()}' data-grade="${grade}" data-title="${title.val()}">
+            ${title.val()}
+            <img src="./images/delete.png" alt="Delete movie" class="delete-movie">
+            ${getStars(grade)}
+        </li>`)
+  }
+  saveMovies(movies)
+  $('#new-movie-form').trigger('reset')
 })
 
-$('#order-alphabetic').on('click', function () {
-  /*
-        Todo: Sortera filmlistan alfabetiskt stigande
-    */
-})
+const validate = (title, grade) => {
+  if (title.val() === '' && grade === 0) {
+    alert('Du måste ange film titel och betyg för att spara den...')
+    return false
+  }
+  if (title.val() === '') {
+    alert('Du måste ange film titel för att spara filmen...')
+    return false
+  }
 
-$('#order-grade').on('click', function () {
-  /*
-        Todo: Sortera filmlistan fallande efter betyg
-    */
-})
+  if (grade === 0) {
+    alert('Du måste ange betyg för att spara filmen...')
+    return false
+  }
+
+  return true
+}
 
 $('#movie-list').on('click', '.delete-movie', function () {
-  /*
-        Todo: Ska ta bort en film från:
-        1. Filmlistan i localStorage
-        2. Från filmlistan som visas på webbsidan
-    */
+  const movies = loadMovies()
+  const id = $(this).closest('li').attr('id')
+
+  const filteredMovies = movies.filter((movie) => {
+    return movie.id != id
+  })
+
+  saveMovies(filteredMovies)
+  $(this).closest('li').remove()
 })
 
 // Skriver ut filmerna i vår lista när sidan laddats klart
