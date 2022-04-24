@@ -1,7 +1,9 @@
-function printMovies(movies) {
+const printMovies = (movies) => {
   movies.map((movie) => {
     $('#movie-list').append(`
-        <li data-grade="${movie.grade}" data-title="${movie.title}">
+        <li id="${movie.id}" data-grade="${movie.grade}" data-title="${
+      movie.title
+    }">
             ${movie.title}
             <img src="./images/delete.png" alt="Delete movie" class="delete-movie">
             ${getStars(movie.grade)}
@@ -9,13 +11,13 @@ function printMovies(movies) {
   })
 }
 
-function loadMovies() {
-  const movies = JSON.parse(localStorage.getItem('movies'))
+const loadMovies = () => {
+  const movies = JSON.parse(localStorage.getItem('movies')) || '[]'
 
   return movies
 }
 
-function getStars(rating) {
+const getStars = (rating) => {
   let stars = ''
   for (let i = 0; i < rating; i++)
     stars += ' <img src="./images/star.png" alt="Star">'
@@ -23,11 +25,11 @@ function getStars(rating) {
   return stars
 }
 
-function saveMovies(movies) {
+const saveMovies = (movies) => {
   localStorage.setItem('movies', JSON.stringify(movies))
 }
 
-$('#new-movie-form').on('submit', function (e) {
+$('#new-movie-form').on('submit', (e) => {
   let rating = ''
   $('select')
     .change(function () {
@@ -40,11 +42,11 @@ $('#new-movie-form').on('submit', function (e) {
   const title = $('#title')
   const grade = parseInt(rating)
 
-  let movies = localStorage.getItem('movies') || '[]'
-  movies = JSON.parse(movies)
+  let movies = loadMovies()
 
   if (validate(title, grade)) {
     movies.push({ id: Date.now(), title: title.val(), grade: grade })
+
     $('#movie-list').append(`
         <li id='${Date.now()}' data-grade="${grade}" data-title="${title.val()}">
             ${title.val()}
@@ -52,6 +54,7 @@ $('#new-movie-form').on('submit', function (e) {
             ${getStars(grade)}
         </li>`)
   }
+
   saveMovies(movies)
   $('#new-movie-form').trigger('reset')
 })
@@ -78,16 +81,14 @@ $('#movie-list').on('click', '.delete-movie', function () {
   const movies = loadMovies()
   const id = $(this).closest('li').attr('id')
 
-  const filteredMovies = movies.filter((movie) => {
-    return movie.id != id
-  })
-
+  const filteredMovies = movies.filter((movie) => movie.id != id)
+  console.log(filteredMovies)
   saveMovies(filteredMovies)
   $(this).closest('li').remove()
 })
 
 // Skriver ut filmerna i vår lista när sidan laddats klart
-$(document).ready(function () {
+$(document).ready(() => {
   const movies = loadMovies()
   printMovies(movies)
 })
