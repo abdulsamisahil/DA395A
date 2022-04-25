@@ -1,4 +1,5 @@
 const printMovies = (movies) => {
+  $('#movie-list').html('')
   movies.map((movie) => {
     $('#movie-list').append(`
         <li id="${movie.id}" data-grade="${movie.grade}" data-title="${
@@ -12,7 +13,7 @@ const printMovies = (movies) => {
 }
 
 const loadMovies = () => {
-  const movies = JSON.parse(localStorage.getItem('movies')) || '[]'
+  const movies = JSON.parse(localStorage.getItem('movies')) || []
 
   return movies
 }
@@ -26,7 +27,7 @@ const getStars = (rating) => {
 }
 
 const saveMovies = (movies) => {
-  localStorage.setItem('movies', JSON.stringify(movies))
+  localStorage.setItem('movies', JSON.stringify(movies)) 
 }
 
 $('#new-movie-form').on('submit', (e) => {
@@ -47,15 +48,11 @@ $('#new-movie-form').on('submit', (e) => {
   if (validate(title, grade)) {
     movies.push({ id: Date.now(), title: title.val(), grade: grade })
 
-    $('#movie-list').append(`
-        <li id='${Date.now()}' data-grade="${grade}" data-title="${title.val()}">
-            ${title.val()}
-            <img src="./images/delete.png" alt="Delete movie" class="delete-movie">
-            ${getStars(grade)}
-        </li>`)
+    saveMovies(movies)
+    printMovies(movies)
+  
   }
 
-  saveMovies(movies)
   $('#new-movie-form').trigger('reset')
 })
 
