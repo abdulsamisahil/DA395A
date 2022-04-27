@@ -37,7 +37,7 @@ let options = {
   maximumAge: 0,
 }
 
-function success(position) {
+const success = (position) => {
   // Ta en titt i er webbkonsol och se vad den innehåller.
   console.log('This is our position: ', position)
   lon.text(position.coords.longitude)
@@ -46,10 +46,17 @@ function success(position) {
 
   alti.text(position.coords.altitude || '0')
   prec_alti.text(position.coords.altitudeAccuracy || '0')
-  speed.text(position.coords.speed || 'NaN')
+  speed.text(position.coords.speed || 'null')
+
+  const speedContainer = $('#speed-container')
+
+  if (speed.text() !== 'null') {
+    let sp_num = parseInt(speed.text())
+    speedContainer.addClass(getSpeedClass(sp_num))
+  }
 }
 
-function error(err) {
+const error = (err) => {
   console.warn('Something went wrong: ', err.message)
 }
 
@@ -59,3 +66,17 @@ let watchID = navigator.geolocation.watchPosition(success, error, options)
 
 // Skulle vi sedan vilja avbryta detta hade vi anropat `clearWatch`
 //navigator.geolocation.clearWatch(watchID)
+
+const getSpeedClass = (speed) => {
+  const speedInKm = speed * 3.6
+
+  if (speedInKm < 5) {
+    return 'bg-danger'
+  } else if (speedInKm > 5 && speedInKm < 10) {
+    return 'bg-warning'
+  } else if (speedInKm > 10) {
+    return 'bg-success'
+  }
+
+  return ''
+}
