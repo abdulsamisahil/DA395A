@@ -55,8 +55,17 @@ $('#new-movie-form').on('submit', (e) => {
 })
 
 const validate = (title, grade) => {
-  if (title.val() === '' || grade === 0) {
-    alert('Du måste ange båda film titel och betyg för att spara den...')
+  if (title.val() === '' && grade === 0) {
+    alert('Du måste ange film titel och betyg för att spara den...')
+    return false
+  }
+  if (title.val() === '') {
+    alert('Du måste ange film titel för att spara filmen...')
+    return false
+  }
+
+  if (grade === 0) {
+    alert('Du måste ange betyg för att spara filmen...')
     return false
   }
 
