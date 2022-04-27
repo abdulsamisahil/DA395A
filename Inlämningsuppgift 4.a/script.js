@@ -26,9 +26,8 @@ const getStars = (rating) => {
   return stars
 }
 
-const saveMovies = (movies) => {
-  localStorage.setItem('movies', JSON.stringify(movies)) 
-}
+const saveMovies = (movies) =>
+  localStorage.setItem('movies', JSON.stringify(movies))
 
 $('#new-movie-form').on('submit', (e) => {
   let rating = ''
@@ -50,7 +49,6 @@ $('#new-movie-form').on('submit', (e) => {
 
     saveMovies(movies)
     printMovies(movies)
-  
   }
 
   $('#new-movie-form').trigger('reset')
@@ -79,7 +77,6 @@ $('#movie-list').on('click', '.delete-movie', function () {
   const id = $(this).closest('li').attr('id')
 
   const filteredMovies = movies.filter((movie) => movie.id != id)
-  console.log(filteredMovies)
   saveMovies(filteredMovies)
   $(this).closest('li').remove()
 })
