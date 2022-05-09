@@ -1,6 +1,4 @@
-import MovieApplication from './components/MovieApplication'
 import Movies from './components/Movies'
-import Movie from './components/Movie'
 import OrderByAlphaButton from './components/OrderByAlphaButton'
 import OrderByGradeButton from './components/OrderByGradeButton'
 import SaveMoviesButton from './components/SaveMoviesButton'

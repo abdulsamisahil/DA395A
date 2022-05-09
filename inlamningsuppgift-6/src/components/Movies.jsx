@@ -23,13 +23,14 @@ const Movies = () => {
 
     inputRef.current.value = ''
   }
+  const onDelete = (id) => {}
   return (
     <>
       <AddMovieForm onSubmit={onSubmit} useRef={inputRef} />
       <div className='mt-2'>
         <ul className='list-group'>
           {movies.map((movie) => (
-            <Movie key={movie.id} item={movie} />
+            <Movie key={movie.id} item={movie} onDelete={onDelete} />
           ))}
         </ul>
       </div>
