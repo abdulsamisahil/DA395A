@@ -1,4 +1,5 @@
-const AddMovieForm = ({ onSubmit, useRef }) => {
+const AddMovieForm = (props) => {
+  const { onSubmit, useRef, handleGradeChange, defaultValue } = props
   return (
     <>
       <h1>Min filmlista</h1>
@@ -17,7 +18,12 @@ const AddMovieForm = ({ onSubmit, useRef }) => {
 
           <label htmlFor='rating-field'>Betyg:</label>
 
-          <select type='text' id='rating-field' className='form-control'>
+          <select
+            type='text'
+            defaultValue={defaultValue}
+            onChange={handleGradeChange}
+            className='form-control'
+          >
             <option value='0'>Välj betyg här...</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
