@@ -7,8 +7,7 @@ const Movie = (props) => {
           className='btn btn-sm btn-danger float-end'
           onClick={props.onDelete}
         >
-          {' '}
-          X{' '}
+          X
         </button>
       </li>
     </>
