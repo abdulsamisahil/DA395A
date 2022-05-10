@@ -65,8 +65,10 @@ const Movies = () => {
           ))}
         </ul>
       </div>
-      <OrderByAlphaButton clickHandler={sortByAlpa} />
-      <OrderByGradeButton clickHandler={sortByGrade} />
+      <div id='sorting-btns' className='d-flex mt-2 justify-content-between'>
+        <OrderByAlphaButton clickHandler={sortByAlpa} />
+        <OrderByGradeButton clickHandler={sortByGrade} />
+      </div>
     </>
   )
 }
