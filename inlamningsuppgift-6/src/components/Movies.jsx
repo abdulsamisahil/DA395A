@@ -33,10 +33,21 @@ const Movies = () => {
   }
 
   const sortByAlpa = () => {
-    alert('Alfabetiskordning clicked')
+    const sortedMovies = [...movies].sort((a, b) => {
+      return b.title - a.title
+    })
+
+    setMovies(sortedMovies.reverse())
+    console.log('ByAlpha')
   }
+
   const sortByGrade = () => {
-    alert('betygsordning clicked')
+    const sortedMovies = [...movies].sort((a, b) => {
+      return b.grade - a.grade
+    })
+
+    setMovies(sortedMovies)
+    console.log('ByGrade')
   }
 
   return (
