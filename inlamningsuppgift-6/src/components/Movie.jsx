@@ -1,10 +1,4 @@
 const Movie = (props) => {
-  let stars = ''
-
-  for (let i = 0; i < props.item.grade; i++) {
-    stars += '<img src="../images/star.png" />'
-  }
-
   return (
     <>
       <li className='list-group-item'>
@@ -17,10 +11,14 @@ const Movie = (props) => {
         >
           X
         </button>
-        {window.HTMLReactParser(stars)}
+        {window.HTMLReactParser(getStars(props.item.grade))}
       </li>
     </>
   )
+}
+
+const getStars = (grade) => {
+  return "<img src='../images/star.png'>".repeat(parseInt(grade))
 }
 
 export default Movie

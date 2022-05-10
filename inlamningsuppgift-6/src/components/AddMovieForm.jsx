@@ -1,5 +1,5 @@
 const AddMovieForm = (props) => {
-  const { onSubmit, useRef, handleGradeChange, defaultValue } = props
+  const { onSubmit, useRef, onChange, defaultValue } = props
   return (
     <>
       <h1>Min filmlista</h1>
@@ -20,8 +20,8 @@ const AddMovieForm = (props) => {
 
           <select
             type='text'
-            defaultValue={defaultValue}
-            onChange={handleGradeChange}
+            value={defaultValue}
+            onChange={onChange}
             className='form-control'
           >
             <option value='0'>Välj betyg här...</option>
@@ -31,8 +31,9 @@ const AddMovieForm = (props) => {
             <option value='4'>4</option>
             <option value='5'>5</option>
           </select>
-
-          <input type='submit' className='btn btn-success mt-3' />
+          <div className='d-grid gap-2'>
+            <input type='submit' className='btn btn-success mt-3' />
+          </div>
         </fieldset>
       </form>
     </>
