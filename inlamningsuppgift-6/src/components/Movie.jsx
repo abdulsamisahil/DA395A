@@ -1,8 +1,9 @@
 const Movie = (props) => {
   return (
     <>
-      <li className='list-group-item'>
+      <li className='list-group-item d-flex justify-content-between align-items-center'>
         {props.item.title}
+        {window.HTMLReactParser(getStars(props.item.grade))}
         <button
           className='btn btn-sm btn-danger float-end'
           onClick={() => {
@@ -11,14 +12,15 @@ const Movie = (props) => {
         >
           X
         </button>
-        {window.HTMLReactParser(getStars(props.item.grade))}
       </li>
     </>
   )
 }
 
 const getStars = (grade) => {
-  return "<img src='../images/star.png'>".repeat(parseInt(grade))
+  return `<img src=${process.env.PUBLIC_URL + '/star.png'}>`.repeat(
+    parseInt(grade)
+  )
 }
 
 export default Movie
