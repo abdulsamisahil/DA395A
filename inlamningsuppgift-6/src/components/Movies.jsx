@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react'
 import AddMovieForm from './AddMovieForm'
 import Movie from './Movie'
+import OrderByAlphaButton from './OrderByAlphaButton'
+import OrderByGradeButton from './OrderByGradeButton'
+
 const Movies = () => {
   const [movies, setMovies] = useState([])
   const [grade, setGrade] = useState('0')
@@ -11,7 +14,7 @@ const Movies = () => {
     e.preventDefault()
 
     if (inputRef.current.value === '' || grade === '0') {
-      alert('Lägg till filmnamn och betyg för att spara den')
+      alert('Du måste ange både titel & betyg för att kunna spara filmen!')
       return
     }
     const newId = movies.length > 0 ? movies[movies.length - 1].id + 1 : 1
@@ -29,6 +32,13 @@ const Movies = () => {
     setMovies(movies.filter((movie) => movie.id !== id))
   }
 
+  const sortByAlpa = () => {
+    alert('Alfabetiskordning clicked')
+  }
+  const sortByGrade = () => {
+    alert('betygsordning clicked')
+  }
+
   return (
     <>
       <AddMovieForm
@@ -44,6 +54,8 @@ const Movies = () => {
           ))}
         </ul>
       </div>
+      <OrderByAlphaButton clickHandler={sortByAlpa} />
+      <OrderByGradeButton clickHandler={sortByGrade} />
     </>
   )
 }
