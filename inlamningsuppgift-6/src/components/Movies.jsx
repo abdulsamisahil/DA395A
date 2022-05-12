@@ -34,11 +34,10 @@ const Movies = () => {
 
   const sortByAlpa = () => {
     const sortedMovies = [...movies].sort((a, b) => {
-      return b.title - a.title
+      return b.title > a.title ? -1 : 1
     })
 
-    setMovies(sortedMovies.reverse())
-    console.log('ByAlpha')
+    setMovies(sortedMovies)
   }
 
   const sortByGrade = () => {
@@ -47,7 +46,6 @@ const Movies = () => {
     })
 
     setMovies(sortedMovies)
-    console.log('ByGrade')
   }
 
   return (
